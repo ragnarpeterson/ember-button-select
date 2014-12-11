@@ -31,7 +31,7 @@
     "express": "^4.8.5",
     "glob": "^4.0.5"
   },
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "A button select component for your ember app.",
   "keywords": [
     "ember-addon"
   ],
