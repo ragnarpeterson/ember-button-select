@@ -6,14 +6,21 @@ export default Em.Component.extend({
   classNames: ['button-option'],
   classNameBindings: ['isSelected:selected'],
   attributeBindings: ['type'],
+  label: null,
   value: null,
-  isSelected: false,
+  isSelected: Em.computed('parentView.selected', function () {
+    return this.get('parentView.selected') === this.get('value');
+  }).readOnly(),
 
-  register: function() {
+  register: Em.on('didInsertElement', function() {
     this.get('parentView').send('register', this);
-  }.on('didInsertElement'),
+  }),
 
-  select: function() {
+  unregister: Em.on('willDestroyElement', function() {
+    this.get('parentView').send('unregister', this);
+  }),
+
+  select: Em.on('click', function() {
     this.get('parentView').send('select', this);
-  }.on('click')
+  })
 });

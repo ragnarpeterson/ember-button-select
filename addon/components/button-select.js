@@ -5,20 +5,23 @@ export default Em.Component.extend({
   buttons: null,
   selected: null,
 
-  setup: function() {
+  setup: Em.on('init', function() {
     this.buttons = [];
-  }.on('init'),
+  }),
 
   actions: {
     select: function(button) {
       this.set('selected', button.get('value'));
-      this.buttons.setEach('isSelected', false);
-      button.set('isSelected', true);
     },
 
     register: function(button) {
-      button.set('isSelected', button.get('value') === this.get('selected'));
       this.buttons.addObject(button);
+    },
+
+    unregister: function(button) {
+      // how should we handle the case where the object being destroyed
+      // is the selected button?
+      this.buttons.removeObject(button);
     }
   }
 });
