@@ -6,7 +6,7 @@ export default Em.Component.extend({
   selected: null,
 
   setup: Em.on('init', function() {
-    this.buttons = [];
+    this.buttons = Em.A();
   }),
 
   actions: {
