@@ -19,9 +19,11 @@ export default Em.Component.extend({
     },
 
     unregister: function(button) {
-      // how should we handle the case where the object being destroyed
-      // is the selected button?
       this.buttons.removeObject(button);
+
+      if (button.get('isSelected')) {
+        this.set('selected', this.buttons.get('firstObject.value') || null);
+      }
     }
   }
 });
