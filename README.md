@@ -4,7 +4,10 @@ A button select component for your ember app.
 
 ## Installation
 
-* `npm install --save ember-button-select`
+```bash
+# From within your ember-cli project
+ember install:addon ember-button-select
+```
 
 ## Usage
 
